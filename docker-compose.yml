@@ -1,0 +1,19 @@
+version:  "3.4"
+services:
+  database-container:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: redhat
+      MYSQL_USER: chetan
+      MYSQL_DATABASE: wordpress_db
+      MYSQL_PASSWORD: redhat
+
+  wordpress:
+    image: wordpress
+    ports:
+      - "80:80"
+    environment:
+            WORDPRESS_DB_HOST: database-container
+            WORDPRESS_DB_USER: chetan
+            WORDPRESS_DB_PASSWORD: redhat
+            WORDPRESS_DB_NAME: wordpress_db
